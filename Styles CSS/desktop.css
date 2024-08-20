@@ -1,4 +1,4 @@
-@media screen and (min-width: 1098px ) {
+@media screen and (min-width: 1098px) {
     body {
         /* Exibir corpo como flexbox */
         display: flex;
@@ -9,9 +9,9 @@
     }
 
     header {
-        
+
         width: 100%;
-        
+
     }
 
     section {
@@ -43,6 +43,7 @@
         font-weight: 600;
         font-size: large;
     }
+
     .bone {
         display: flex;
         align-items: center;
@@ -51,25 +52,33 @@
         width: 450px;
         height: 394px;
         margin-top: 45px;
-    
-    
+
+
         background-color: #ddd;
         border-radius: 15px;
-    
+
         filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.25));
-    
-    
+
+
     }
-    
-    
+
+
     #bone-img {
         width: 311px;
         height: 270px;
-        }
+    }
 
     #moletom-img #camiseta-laranja-img #moletom-laranja-img #jaqueta-img #touca-img #gorro-img {
         width: 286px;
         height: 296px;
+    }
+
+    .material-symbols-outlined {
+        font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
     }
 
 }
