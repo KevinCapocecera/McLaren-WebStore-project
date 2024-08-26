@@ -18,18 +18,48 @@ window.onclick = function (event) {
     }
 }
 
+function adicionarProduto() {
+    let descricao = 0; 
+    
+    descricao = document.getElementById("descricao").textContent;
+    console.log(descricao);
 
-function search() {
-    document.getElementById("search-button").value;
+    let produtos = JSON.parse(localStorage.getItem('carrinho')) || [];
 
-    var input = document.getElementById("search-button").value;
-    if (input == "") {
-        document.getElementById("search-button").value = "Search";
-    }
+    produtos.push(descricao);
+
+    localStorage.setItem('carrinho', JSON.stringify(produtos));
+
+}
+
+function carregarCarrinho() {
+    let produtos = JSON.parse(localStorage.getItem('carrinho')) || [];
+    let lista = document.getElementById('lista-carrinho');
+    lista.innerHTML = "";
+
+    produtos.forEach(descricao => {
+        let item = document.createElement('li');
+
+        item.textContent = descricao;
+
+        lista.appendChild(item);
+
+    })
+
+}
+
+carregarCarrinho();
 
 
+function remover() {
+    var rem = document.getElementById("lista-carrinho");
+    rem.removeChild(rem.lastElementChild);
 
+    let produtos = JSON.parse(localStorage.getItem('carrinho')) || [];
+    produtos.pop();     
 
+    localStorage.setItem('carrinho', JSON.stringify(produtos));
 
+    carregarCarrinho();
 
 }

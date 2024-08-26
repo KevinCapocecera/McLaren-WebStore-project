@@ -265,7 +265,7 @@ footer {
     
 
 }
-#add-cart{
+.add-cart{
     display: flex;
     align-items: center;
     justify-content: center;
