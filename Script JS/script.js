@@ -1,65 +1,78 @@
-/* Quando o usuário clica no botão,
-alterna entre esconder e mostrar o conteúdo do dropdown */
+// Função que alterna entre esconder e mostrar o conteúdo do dropdown
+// quando o usuário clica no botão
 function myFunction() {
+    // Obtem o elemento com o id "myDropdown" e alterna a classe "show"
     document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Feche o menu dropdown se o usuário clicar fora dele
-window.onclick = function (event) {
+  }
+  
+  // Função que fecha o menu dropdown se o usuário clicar fora dele
+  window.onclick = function (event) {
+    // Verifica se o alvo do clique não é o botão do dropdown
     if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
+      // Obtem todos os elementos com a classe "dropdown-content"
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      // Percorre os elementos e remove a classe "show" se estiver presente
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
         }
+      }
     }
-}
-
-function adicionarProduto() {
-    let descricao = 0; 
-    
-    descricao = document.getElementById("descricao").textContent;
+  }
+  
+  // Função que adiciona um produto ao carrinho
+  function adicionarProduto() {
+    // Obtem o texto do elemento com o id "descricao"
+    let descricao = document.getElementById("descricao").textContent;
     console.log(descricao);
-
+  
+    // Obtem o array de produtos do localStorage ou cria um novo se não existir
     let produtos = JSON.parse(localStorage.getItem('carrinho')) || [];
-
+  
+    // Adiciona o produto ao array
     produtos.push(descricao);
-
+  
+    // Salva o array no localStorage
     localStorage.setItem('carrinho', JSON.stringify(produtos));
-
-}
-
-function carregarCarrinho() {
+  }
+  
+  // Função que carrega o carrinho
+  function carregarCarrinho() {
+    // Obtem o array de produtos do localStorage ou cria um novo se não existir
     let produtos = JSON.parse(localStorage.getItem('carrinho')) || [];
+    // Obtem o elemento com o id "lista-carrinho"
     let lista = document.getElementById('lista-carrinho');
+    // Limpa o conteúdo da lista
     lista.innerHTML = "";
-
+  
+    // Percorre os produtos e adiciona-os à lista
     produtos.forEach(descricao => {
-        let item = document.createElement('li');
-
-        item.textContent = descricao;
-
-        lista.appendChild(item);
-
+      let item = document.createElement('li');
+      item.textContent = descricao;
+      lista.appendChild(item);
     })
-
-}
-
-carregarCarrinho();
-
-
-function remover() {
+  }
+  
+  // Chama a função carregarCarrinho ao carregar a página
+  carregarCarrinho();
+  
+  // Função que remove o último produto do carrinho
+  function remover() {
+    // Obtem o elemento com o id "lista-carrinho"
     var rem = document.getElementById("lista-carrinho");
+    // Remove o último elemento da lista
     rem.removeChild(rem.lastElementChild);
-
+  
+    // Obtem o array de produtos do localStorage
     let produtos = JSON.parse(localStorage.getItem('carrinho')) || [];
-    produtos.pop();     
-
+    // Remove o último produto do array
+    produtos.pop();
+  
+    // Salva o array no localStorage
     localStorage.setItem('carrinho', JSON.stringify(produtos));
-
+  
+    // Chama a função carregarCarrinho para atualizar a lista
     carregarCarrinho();
-
-}
+  }
